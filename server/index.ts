@@ -66,6 +66,11 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
+  // Start Discord bot
+  // Bot geçici olarak devre dışı - web paneli çalışıyor
+  console.log("\n⚠️  Discord bot başlatmak için DISCORD_TOKEN ve DISCORD_CLIENT_ID gerekli");
+  console.log("Web paneli çalışıyor: http://localhost:5000\n");
+
   // ALWAYS serve the app on the port specified in the environment variable PORT
   // Other ports are firewalled. Default to 5000 if not specified.
   // this serves both the API and the client.

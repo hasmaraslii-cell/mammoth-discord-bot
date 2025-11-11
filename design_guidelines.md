@@ -1,190 +1,133 @@
 # Mammoth Discord Bot - Web Admin Panel Design Guidelines
 
 ## Design Approach
+**System-Based**: Material Design + Discord-inspired patterns for admin efficiency
+**Key Principles**: Information hierarchy through card grouping, instant visual feedback, scan-friendly layouts, progressive disclosure for complex configurations
 
-**Selected Approach**: Design System (Material Design + Discord-inspired patterns)
+---
 
-**Justification**: Admin dashboard for bot management requires clarity, efficiency, and familiar patterns. Drawing from Material Design's component library with Discord's approachable aesthetic (rounded corners, card-based layouts, modern typography).
+## Color System
+**Primary Palette** (Discord Brand):
+- Primary: #5865F2 (Discord Blurple) - Primary actions, active states, links
+- Primary Hover: #4752C4 - Interactive hover states
+- Primary Light: #7983F5 - Badges, highlights, accents
 
-**Key Principles**:
-- Information hierarchy through card grouping and spacing
-- Instant visual feedback for all actions
-- Scan-friendly layouts for settings and data tables
-- Progressive disclosure for complex configurations
+**Background Hierarchy** (Dark Theme):
+- App Background: #1E1F22 - Main canvas
+- Surface: #2B2D31 - Cards, panels, elevated surfaces
+- Surface Elevated: #313338 - Modals, dropdowns, hover states
+- Borders: #3F4147 - Dividers, input borders
+
+**Semantic Colors**:
+- Success: #3BA55D (Green) - Confirmations, positive states
+- Warning: #FAA81A (Yellow) - Caution indicators
+- Danger: #ED4245 (Red) - Destructive actions, errors
+- Info: #00AFF4 (Blue) - Information, neutral notifications
+
+**Text Hierarchy**:
+- Primary Text: #F2F3F5 - Headings, important content
+- Secondary Text: #B5BAC1 - Body text, descriptions
+- Muted Text: #80848E - Captions, helper text, timestamps
 
 ---
 
 ## Typography System
-
-**Font Stack**: Inter (primary UI), JetBrains Mono (code/command display)
-- **Display**: text-3xl to text-4xl, font-bold (Dashboard headers, section titles)
-- **Headings**: text-xl to text-2xl, font-semibold (Card headers, modal titles)
-- **Body**: text-base, font-normal (Settings descriptions, table content)
-- **Labels**: text-sm, font-medium (Form labels, badges)
-- **Caption**: text-xs, font-normal (Helper text, timestamps)
-- **Monospace**: Commands, IDs, technical data (text-sm, font-mono)
+**Font Stack**: Inter (UI), JetBrains Mono (code/commands)
+- Display: text-3xl/4xl font-bold - Dashboard headers
+- Headings: text-xl/2xl font-semibold - Card headers, modal titles
+- Body: text-base font-normal - Settings, table content
+- Labels: text-sm font-medium - Form labels, badges
+- Caption: text-xs font-normal - Helper text, timestamps
+- Monospace: text-sm font-mono - Commands, IDs, technical data
 
 ---
 
 ## Layout System
-
-**Spacing Scale**: Use Tailwind units of **2, 4, 6, 8, 12, 16** consistently
+**Spacing Scale**: Tailwind units **2, 4, 6, 8, 12, 16**
 - Component padding: p-4 to p-6
 - Section spacing: gap-6 to gap-8
 - Page margins: p-8 to p-12
 - Card spacing: space-y-6
 
 **Grid Structure**:
-- Dashboard layout: Sidebar (w-64) + Main content (flex-1)
-- Settings panels: Single column max-w-4xl for forms
-- Stats overview: 2-4 column grid (grid-cols-1 md:grid-cols-2 lg:grid-cols-4)
-- Command/message lists: Full-width with max-w-6xl container
+- Sidebar (w-64, fixed) + Main content (flex-1)
+- Settings: Single column max-w-4xl
+- Stats: grid-cols-1 md:grid-cols-2 lg:grid-cols-4
+- Lists: Full-width with max-w-6xl container
 
 ---
 
 ## Component Library
 
 ### Navigation
-**Sidebar Navigation** (Fixed, left-aligned):
-- Logo + bot name at top (h-16, p-4)
-- Navigation groups with section headers
-- Icon + label for each item (h-10, px-4, rounded-lg)
-- Active state: Distinct treatment with icon emphasis
-- Collapsible sections for sub-navigation
+**Sidebar**: Fixed left, Surface background, logo top (h-16 p-4), grouped nav items with icons, active state uses Primary color, collapsible sub-sections
 
-**Top Bar**:
-- Server selector dropdown (left)
-- Search bar (center, max-w-md)
-- User profile + notifications (right)
+**Top Bar**: Server selector (left), search (center, max-w-md), user profile + notifications (right), Surface Elevated background, border-b with Borders color
 
-### Cards & Panels
-**Primary Card Structure**:
-- Rounded corners (rounded-lg)
-- Shadow elevation (shadow-md)
-- Header with title + action button
-- Content area with consistent p-6
-- Footer with secondary actions if needed
+### Cards & Surfaces
+**Primary Cards**: Surface background, rounded-lg, shadow-lg, header with title + action button, content p-6, subtle border with Borders color
 
-**Settings Cards**: 
-- Switch/toggle controls aligned right
-- Input fields with full-width design
-- Help text below each setting (text-sm)
+**Stat Cards**: Surface background, large metric (text-3xl Primary Text), label (Secondary Text), trend indicator with Success/Danger color
 
 ### Forms & Inputs
-**Form Layout**:
-- Vertical stacking with space-y-4
-- Labels above inputs (text-sm, font-medium, mb-2)
-- Full-width inputs (w-full, h-10, px-4, rounded-md)
-- Inline validation messages below fields
-- Action buttons right-aligned in footer
+**Input Fields**: Surface Elevated background, Borders color border, h-10 px-4 rounded-md, Primary Text text, focus ring with Primary color
 
-**Specialized Inputs**:
-- Channel selector with icon prefix
-- Role picker with color indicator dots
-- Emoji picker button integration
-- Rich text editor for embed messages
+**Toggles/Switches**: Primary color when active, Surface Elevated when inactive, smooth transitions
+
+**Specialized Inputs**: Channel selector with # prefix icon, role picker with colored dots, emoji picker integration, rich text editor for embeds
 
 ### Data Display
-**Tables**:
-- Full-width with alternating row treatment
-- Sticky header for scrollable content
-- Icon + text for actions column
-- Pagination at bottom (centered)
-- Quick filters above table
+**Tables**: Surface background, alternating row (Surface Elevated on hover), sticky header, Borders color dividers, pagination centered bottom
 
-**Message Builder Preview**:
-- Live preview card showing Discord-style message
-- Button layout preview with action indicators
-- Embed builder with color strip
+**Message Preview**: Discord-style card with Surface Elevated background, embed color stripe (Primary), button layout preview with action indicators
 
-**Moderation Logs**:
-- Timeline view with timestamps
-- User avatar + action description
-- Expandable details for each entry
-- Filter by action type, user, date
+**Moderation Logs**: Timeline view, user avatars, timestamps (Muted Text), expandable details, action type badges (Semantic colors)
 
 ### Buttons & Actions
-**Primary Actions**: px-6, h-10, rounded-md, font-medium
-**Secondary Actions**: Outlined variant with hover states
-**Danger Actions**: Distinct treatment for destructive operations
-**Icon Buttons**: w-10, h-10, rounded-md for compact actions
+**Primary**: Primary background, white text, px-6 h-10 rounded-md font-medium, Primary Hover on hover
+**Secondary**: Surface Elevated background, Primary Text, Borders border, hover to Surface elevated
+**Danger**: Danger background for destructive actions, clear confirmation dialogs
+**Icon Buttons**: w-10 h-10 rounded-md, Surface Elevated background on hover
 
 ### Modals & Overlays
-**Modal Structure**:
-- Centered overlay with backdrop blur
-- max-w-2xl for standard modals
-- max-w-4xl for complex forms (message builder)
-- Header with title + close button
-- Content area with p-6
-- Footer with action buttons
+**Modal**: Centered, backdrop blur with dark overlay, Surface Elevated background, max-w-2xl (standard) or max-w-4xl (complex forms), header with close button, content p-6, footer with actions
 
-**Confirmation Dialogs**: 
-- Compact max-w-md size
-- Clear danger indicators for destructive actions
+**Toast Notifications**: Top-right corner, Surface Elevated background, Semantic color accent strip, icon + message + close button
 
 ### Special Components
-**Button Message Creator**:
-- Drag-and-drop button arrangement
-- Action type selector (Role/DM/Link)
-- Live Discord-style preview
-- Template gallery view
+**Button Message Creator**: Drag-and-drop arrangement, action type selector (role/DM/link), live Discord-style preview card, template gallery grid
 
-**Dashboard Stats**:
-- Metric cards with large numbers (text-3xl)
-- Trend indicators with icons
-- Mini charts for activity over time
+**Command Manager**: Searchable list, toggle enable/disable with Primary color, slide-in edit panel from right, custom command builder
 
-**Command Manager**:
-- Searchable command list
-- Toggle to enable/disable commands
-- Edit panel slides in from right
-- Custom command builder form
+**Reaction Roles**: Emoji + role pairing interface, add/remove actions, preview message display
 
 ---
 
 ## Page Layouts
 
 ### Dashboard Home
-- Welcome header with server icon and name
-- 4-column stats grid (members, commands used, moderation actions, uptime)
-- Recent activity feed (2-column: logs + new members)
-- Quick actions cards
+Stats grid (4 columns), recent activity feed (2 columns: logs + new members), quick actions cards, welcome header with server icon
 
 ### Message Creator
-- Left panel: Form inputs (channel, content, embed builder)
-- Right panel: Live preview
-- Bottom: Button designer with action configuration
-
-### Settings
-- Tabbed navigation for categories (General, Moderation, Automation, Roles)
-- Single-column form layout
-- Save button fixed at bottom-right
-- Changes indicator
+Left panel: Form inputs (channel, content, embed builder), right panel: Live preview (Discord-style), bottom: Button designer with drag-drop arrangement
 
 ### Moderation Center
-- Filter bar at top
-- Main log table with expandable rows
-- Sidebar with quick stats and filters
-- Action toolbar for bulk operations
+Filter bar top, expandable log table, sidebar with quick stats, bulk action toolbar
+
+### Settings
+Tabbed navigation (General/Moderation/Automation/Roles), single-column forms, save button fixed bottom-right, unsaved changes indicator
 
 ### Member Management
-- Member list with avatar, roles, join date
-- Search and role filter
-- Bulk actions toolbar
-- Member detail slide-out panel
+Member table with avatars/roles/join dates, search and role filters, bulk actions toolbar, detail slide-out panel from right
 
 ---
 
 ## Responsive Strategy
-- **Desktop (lg+)**: Full sidebar + content layout
-- **Tablet (md)**: Collapsible sidebar, full features maintained
-- **Mobile**: Bottom nav bar, stacked layouts, drawer for settings
+- Desktop (lg+): Full sidebar + content
+- Tablet (md): Collapsible sidebar
+- Mobile: Bottom nav bar, stacked layouts, drawer for settings
 
 ---
 
-## Accessibility & Interactions
-- Keyboard navigation for all actions (Tab, Enter, Escape)
-- Focus indicators on all interactive elements (ring-2 treatment)
-- Screen reader labels for icon-only buttons
-- Success/error toast notifications (top-right corner)
-- Loading states for async operations (skeleton screens for tables, spinners for actions)
+## Accessibility
+Focus indicators (ring-2 with Primary color), keyboard navigation (Tab/Enter/Escape), screen reader labels for icon buttons, loading states (skeleton screens for tables, spinners for actions), clear success/error feedback
